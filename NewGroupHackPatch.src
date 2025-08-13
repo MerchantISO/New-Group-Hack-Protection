@@ -1,0 +1,21 @@
+int GetNumOfFollowers(int a1)
+{
+char buffer[64];
+if (a1 > 0x1000)
+{
+PLAYER_INFO *MyPtr = GET_PLAYER_POINTER(GET_PLAYER_ID());
+int LeaderPedPtr = *(int*)(a1 + 0x3C);
+if (LeaderPedPtr != MyPtr->Char)
+{
+int LeaderPlayerPtr = *(int*)(LeaderPedPtr + 0x220);
+sprintf(buffer, "%s Tried To Grouphack You", (char*)(LeaderPlayerPtr + 0xC));
+print(buffer);
+return 0;
+}
+}
+else
+{
+return 0;
+}
+GetNumOfFollowersStub(a1);
+}
